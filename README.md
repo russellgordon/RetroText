@@ -6,11 +6,31 @@ Makes a SwiftUI `Text` view behave like text from a classic video game.
 
 To install this package, import `https://github.com/russellgordon/RetroText` in Swift Package Manager.
 
+Here's how to do that.
+
+Say your project happens to be named **PipersAdventure**.
+
+Begin by accessing the **Package Dependencies** tab for your project and then using the **+** button to add a new dependency:
+
+<img width="500" alt="step-a" src="https://user-images.githubusercontent.com/6400195/169652120-64633939-41e6-4a4e-a5f5-3e58e4351e04.png">
+
+Then paste the [address of this package](https://github.com/russellgordon/RetroText) into the search field and select **Add Package**:
+
+<img width="500" alt="step-b" src="https://user-images.githubusercontent.com/6400195/169652204-64d50b74-6d35-4214-abff-7c1aaf534b46.png">
+
+On the next dialog that appears, select **Add Package** again to add to the target for your app:
+
+<img width="500" alt="step-c" src="https://user-images.githubusercontent.com/6400195/169652243-17620578-75e8-4116-a278-dd98deb30097.png">
+
+When the package has been imported, your application will look something like this:
+
+<img width="500" alt="step-d" src="https://user-images.githubusercontent.com/6400195/169652261-d1a4bea2-a040-4b64-ac8c-22066934a0ca.png">
+
 ## Usage
 
 First, the fonts distributed within this module must be registered with the operating system from within your app.
 
-You'll need to open the App.swift file *wherever* `@main` *is located*.
+You'll need to open the `App.swift` file *wherever* `@main` *is located*.
 
 For example, say your project is named **PipersAdventure**, then the file you need to modify is going to be `PipersAdventureApp.swift`.
 
