@@ -32,7 +32,7 @@ public struct RetroFontViewModifier: ViewModifier {
 
 extension View {
     
-    /// Apply a class video game-style font with the given name and size that scales with the body text style.
+    /// Apply a class video game-style font of the given type and size that scales with the body text style.
     public func retroFont(_ font: RetroTextFont = .kongText,
                           size: CGFloat = 24.0) -> some View {
         
