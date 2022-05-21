@@ -36,20 +36,3 @@ public struct RetroText {
     }
 
 }
-
-public struct RetroTextViewModifier: ViewModifier {
-    
-    public func body(content: Content) -> some View {
-        
-        content
-            .font(Font.custom("KongText", size: 24))
-        
-    }
-    
-}
-
-extension View {
-    public func retroText() -> some View {
-        self.modifier(RetroTextViewModifier())
-    }
-}
