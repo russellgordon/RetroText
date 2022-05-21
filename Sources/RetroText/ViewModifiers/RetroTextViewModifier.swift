@@ -27,7 +27,7 @@ public struct RetroTextViewModifier: ViewModifier {
 
 extension View {
     
-    // Convenience extension to more easily access the custom view modifier
+    /// Apply a class video game-style font with the given name and size that scales with the body text style
     public func retroText(font: RetroTextFont = .kongText,
                           size: CGFloat = 24.0) -> some View {
         
@@ -35,4 +35,13 @@ extension View {
                                             size: size))
         
     }
+
+    /// Apply a class video game-style font with the given name and size that scales with the body text style
+    public func retroText(font: RetroTextFont = .kongText) -> some View {
+        
+        self.modifier(RetroTextViewModifier(font: font,
+                                            size: 24.0))
+        
+    }
+
 }
