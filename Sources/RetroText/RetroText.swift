@@ -26,7 +26,7 @@ public struct RetroText {
     
     // Register all the fonts provided with this module
     public static func registerFonts() {
-        RetroTextFonts.allCases.forEach { currentFont in
+        RetroTextFont.allCases.forEach { currentFont in
             
             registerFont(bundle: .module,
                          fontName: currentFont.rawValue,

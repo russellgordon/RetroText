@@ -1,13 +1,14 @@
 //
-//  Font+Custom.swift
+//  RetroTextFont.swift
 //  
 //
 //  Created by Russell Gordon on 2022-05-21.
 //
 
-import SwiftUI
+import Foundation
 
-public enum RetroTextFonts: String, CaseIterable {
+public enum RetroTextFont: String, CaseIterable {
     case kongText = "KongText"
     case pixelEmulator = "PixelEmulator"
 }
+
