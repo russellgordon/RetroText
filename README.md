@@ -112,8 +112,7 @@ The typing effect alone can be achieved in your app like so – note that the `.
 struct ContentView: View {
     var body: some View {
         
-        EmptyView()
-            .retroTextTypeEffect()
+        TypedText()
             .padding()
         
     }
@@ -129,8 +128,7 @@ To show this with a classic video game font, apply the `.retroText` view modifie
 struct ContentView: View {
     var body: some View {
         
-        EmptyView()
-            .retroTextTypeEffect()
+        TypedText()
             .retroText()
             .padding()
         
@@ -148,9 +146,7 @@ Of course, the message, speed of typing effect, font, and font size can be custo
 struct ContentView: View {
     var body: some View {
         
-        EmptyView()
-            .retroTextTypeEffect(message: "Behold... the coming of a new queen!",
-                                 speed: .fast)
+        TypedText("Behold... the coming of a new queen!", speed: .fast)
             .retroText(font: .pixelEmulator, size: 24.0)
             .padding()
         
@@ -168,9 +164,8 @@ Finally, you can use `#` marks to introduce a slight pause for the typing effect
 struct ContentView: View {
     var body: some View {
         
-        EmptyView()
-            .retroTextTypeEffect(message: "Behold#.#.#. the coming of a new### queen###!",
-                                 speed: .normal)
+        TypedText("Behold#.#.#. the coming of a new### queen###!",
+                  speed: .normal)
             .retroText(font: .pixelEmulator, size: 24.0)
             .padding()
         
