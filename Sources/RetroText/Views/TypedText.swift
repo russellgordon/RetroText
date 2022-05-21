@@ -15,14 +15,13 @@ import SwiftUI
  
  For example:
  ```
-    struct ContentView: View {
-        var body: some View {
-            TypedText("Come with me###, and see what has been foretold#.#.#.")
-                .padding()
-        }
-    }
+ struct ContentView: View {
+     var body: some View {
+         TypedText("Come with me###, and see what has been foretold#.#.#.")
+             .padding()
+     }
+ }
  ```
- 
  */
 public struct TypedText: View {
     
