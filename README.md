@@ -95,9 +95,9 @@ struct ContentView: View {
 
 ```
 
-Note that you are not limited to using the `.retroFont()` view modifier; within your own app, you can [add a custom font](https://betterprogramming.pub/swiftui-basics-importing-custom-fonts-b6396d17424d) and apply it as desired. Here are some examples of [retro-style typefaces available](https://www.1001fonts.com/retro+1980s-fonts.html) for download.
-
 <img width="154" alt="example3" src="https://user-images.githubusercontent.com/6400195/169651305-12d154de-6451-4c6f-a584-796d5445109d.png">
+
+Note that you are not limited to using the `.retroFont()` view modifier; within your own app, you can [add a custom font](https://betterprogramming.pub/swiftui-basics-importing-custom-fonts-b6396d17424d) and apply it as desired. Here are some examples of [retro-style typefaces available](https://www.1001fonts.com/retro+1980s-fonts.html) for download.
 
 ### Usage for Live Typing Effect
 
@@ -157,7 +157,7 @@ struct ContentView: View {
 
 ```
 
-<img height="600" alt="example-iii" src="https://user-images.githubusercontent.com/6400195/169653446-365dd3ca-3446-4e30-811a-896375019025.gif">
+<img height="600" alt="example-iii" src="https://user-images.githubusercontent.com/6400195/169661710-cc7bd28f-9d73-4121-a6b9-4aae5e853069.gif">
 
 Finally, you can use `#` marks to introduce a slight pause for the typing effect. This can be used to build tension or drama:
 
@@ -174,7 +174,7 @@ struct ContentView: View {
 }
 ```
 
-<img height="600" alt="example-iv" src="https://user-images.githubusercontent.com/6400195/169653723-403d2556-c8c1-47e5-8a02-b6c6d48243d5.gif">
+<img height="600" alt="example-iv" src="https://user-images.githubusercontent.com/6400195/169661637-991d9571-14db-49cd-a198-f410e39f672f.gif">
 
 ## Acknowledgements
 
@@ -184,5 +184,5 @@ In no particular order:
 
 * [Achieving a Type-On Text Effect in Swift](https://medium.com/@cboynton/achieving-a-type-on-text-effect-in-swift-6934b683d1e9) by [Christopher Boynton](https://medium.com/@cboynton)
 * [Create your own Swift Package | Xcode, SPM, Swift Tutorial](https://www.youtube.com/watch?v=CekYZzsXmII) by [Florian Schweizer](https://twitter.com/FloWritesCode)
-* [Packaging your Custom Fonts in Swift Packages](https://jacobzivandesign.com/technology/custom-fonts-from-swift-package/) [Jacob Rakidzich](https://github.com/JZDesign/)
+* [Packaging your Custom Fonts in Swift Packages](https://jacobzivandesign.com/technology/custom-fonts-from-swift-package/) by [Jacob Rakidzich](https://github.com/JZDesign/)
 * [SwiftUI Custom View Modifiers](https://useyourloaf.com/blog/swiftui-custom-view-modifiers/) by [Keith Harrison](https://twitter.com/kharrison)
