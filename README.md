@@ -8,6 +8,8 @@ To install this package, import `https://github.com/russellgordon/RetroText` in 
 
 ## Usage
 
+### Register Fonts
+
 First, the fonts distributed within this module must be registered with the operating system from within your app.
 
 You'll need to open the App.swift file *wherever* `@main` *is located*.
@@ -37,7 +39,9 @@ struct PipersAdventureApp: App {
 
 ```
 
-Then, to make actually make the retro-style text appear, use:
+### Usage for Static Text
+
+To make static retro-style text appear with reasonable defaults for typeface and size:
 
 ```swift
 
@@ -52,6 +56,41 @@ struct ContentView: View {
 }
 
 ```
+
+All that the `.retroText()` view modifier does is apply one of the custom fonts that is bundled with this module.
+
+As desired, you can adjust the typeface:
+
+```swift
+
+struct ContentView: View {
+    var body: some View {
+        
+        Text("Come with me, and see what been foretold...")
+            .retroText(font: .pixelEmulator)
+            .padding()
+        
+    }
+}
+
+```
+
+Or both the typeface and size:
+
+```swift
+
+struct ContentView: View {
+    var body: some View {
+        
+        Text("Come with me, and see what been foretold...")
+            .retroText(font: .pixelEmulator, size: 12.0)
+            .padding()
+        
+    }
+}
+
+```
+
 
 ## Acknowledgements
 
