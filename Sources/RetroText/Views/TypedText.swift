@@ -1,5 +1,5 @@
 //
-//  RetroTextTypeEffect.swift
+//  TypedText.swift
 //  
 //
 //  Created by Russell Gordon on 2022-05-21.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-public struct RetroTextTypeEffectViewModifier: ViewModifier {
+public struct TypedText: View {
     
     // MARK: Stored properties
 
@@ -38,33 +38,11 @@ public struct RetroTextTypeEffectViewModifier: ViewModifier {
     // Drives the reveal of each character
     @State var timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
 
-    // MARK: Functions
-    
-    // Runs once when the view modifier is applied
-    public init(message: String, speed: RetroTextTypeEffectSpeed, debug: Bool) {
-        
-        // Set the message
-        self.message = message
-        
-        // The speed at which text should be typed
-        self.speed = speed
-
-        // Whether to show the frame of the text view
-        self.debug = debug
-
-        // Set the array of characters
-        characterArray = Array(message)
-        
-    }
-    
-    public func body(content: Content) -> some View {
+    // MARK: Computed properties
+    var body: some View {
         
         HStack {
             Text(textToShow)
-                // To learn how to add custom fonts, see:
-                // https://betterprogramming.pub/swiftui-basics-importing-custom-fonts-b6396d17424d
-                // NOTE: Be sure to remove license.txt files for fonts from the list of files that are copied into the app bundle.
-                //       Multiple files with the same name will create a compile time error.
                 .border(.red, width: debug ? 1.0 : 0.0)
                 .onReceive(timer) { input in
                     
@@ -109,19 +87,58 @@ public struct RetroTextTypeEffectViewModifier: ViewModifier {
         }
         
     }
-    
-}
 
-extension View {
-    
-    // Convenience extension to more easily access the custom view modifier
-    public func retroTextTypeEffect(message: String = "Come with me###, and see what has been foretold#.#.#.",
-                                    speed: RetroTextTypeEffectSpeed = .normal,
-                                    debug: Bool = false) -> some View {
+    // MARK: Functions
+    // Runs once when the view modifier is applied
+    public init(_ message: String = "Come with me###, and see what has been foretold#.#.#.",
+                speed: RetroTextTypeEffectSpeed = .normal,
+                debug: Bool = false) {
         
-        self.modifier(RetroTextTypeEffectViewModifier(message: message,
-                                                      speed: speed,
-                                                      debug: debug))
+        // Set the message
+        self.message = message
+        
+        // The speed at which text should be typed
+        self.speed = speed
+
+        // Whether to show the frame of the text view
+        self.debug = debug
+
+        // Set the array of characters
+        characterArray = Array(message)
         
     }
+    
+    public init(_ message: String = "Come with me###, and see what has been foretold#.#.#.",
+                speed: RetroTextTypeEffectSpeed = .normal) {
+        
+        // Set the message
+        self.message = message
+        
+        // The speed at which text should be typed
+        self.speed = speed
+
+        // Whether to show the frame of the text view
+        self.debug = false
+
+        // Set the array of characters
+        characterArray = Array(message)
+        
+    }
+    
+    public init(_ message: String = "Come with me###, and see what has been foretold#.#.#.") {
+        
+        // Set the message
+        self.message = message
+        
+        // The speed at which text should be typed
+        self.speed = .normal
+
+        // Whether to show the frame of the text view
+        self.debug = false
+
+        // Set the array of characters
+        characterArray = Array(message)
+        
+    }
+    
 }
