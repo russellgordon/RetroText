@@ -22,10 +22,6 @@ import SwiftUI
      }
  }
  ```
- - Parameters:
-   - message: What message should be typed on the screen.
-   - speed: How fast the message should be typed.
-   - debug: Whether to show a red border around the view; useful for debugging potential layout issues.
  */
 public struct TypedText: View {
     
