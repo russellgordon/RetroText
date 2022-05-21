@@ -121,7 +121,7 @@ extension View {
         
         self.modifier(RetroTextTypeEffectViewModifier(message: message,
                                                       speed: speed,
-                                                      debug: debug)
+                                                      debug: debug))
         
     }
 }
