@@ -37,7 +37,7 @@ public struct RetroText {
 
 }
 
-public struct RetroFontViewModifier: ViewModifier {
+public struct RetroTextViewModifier: ViewModifier {
     
     public func body(content: Content) -> some View {
         
@@ -49,7 +49,7 @@ public struct RetroFontViewModifier: ViewModifier {
 }
 
 extension View {
-    public func retroFont() -> some View {
-        self.modifier(RetroFontViewModifier())
+    public func retroText() -> some View {
+        self.modifier(RetroTextViewModifier())
     }
 }
