@@ -39,7 +39,7 @@ public struct TypedText: View {
     @State var timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
 
     // MARK: Computed properties
-    var body: some View {
+    public var body: some View {
         
         HStack {
             Text(textToShow)
