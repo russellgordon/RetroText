@@ -105,9 +105,8 @@ public struct TypedText: View {
 
     // MARK: Functions
     /// Creates a "typed on" effect where each letter of the message is revealed over time, as controlled by the given message, speed, and debug arguments.
-    /// 
-    /// You can use `#` signs to introduce a pause as letters are typed, which can build tension or create drama.
     ///
+    /// You can use `#` signs to introduce a pause as letters are typed, which can build tension or create drama.
     /// For example:
     /// ```
     /// struct ContentView: View {
