@@ -8,18 +8,17 @@
 import Foundation
 import SwiftUI
 
-/// Creates a "typed on" effect where each letter of the message is revealed over time.
-///
-/// You can use `#` signs to introduce a pause as letters are typed, which can build tension or create drama.
-///
-/// For example:
-///     struct ContentView: View {
-///         var body: some View {
-///            TypedText("Come with me###, and see what has been foretold#.#.#.")
-///            .padding()
-///         }
-///     }
-///     
+/**
+ Creates a "typed on" effect where each letter of the message is revealed over time.
+ You can use `#` signs to introduce a pause as letters are typed, which can build tension or create drama.
+ For example:
+    struct ContentView: View {
+        var body: some View {
+            TypedText("Come with me###, and see what has been foretold#.#.#.")
+                .padding()
+        }
+    }
+ */
 public struct TypedText: View {
     
     // MARK: Stored properties
