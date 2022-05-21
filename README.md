@@ -30,7 +30,7 @@ When the package has been imported, your application will look something like th
 
 ### Register Fonts
 
-First, the fonts distributed within this module must be registered with the operating system from within your app.
+First, the fonts distributed within this package must be registered with the operating system from within your app.
 
 You'll need to open the `App.swift` file *wherever* `@main` *is located*.
 
@@ -69,7 +69,7 @@ struct ContentView: View {
     var body: some View {
         
         Text("Come with me, and see what has been foretold...")
-            .retroText()
+            .retroFont()
             .padding()
         
     }
@@ -77,7 +77,7 @@ struct ContentView: View {
 
 ```
 
-All that the `.retroText()` view modifier does is apply one of the custom fonts that is bundled with this module.
+All that the `.retroFont()` view modifier does is apply one of the custom fonts that is bundled with this package.
 
 <img width="154" alt="example1" src="https://user-images.githubusercontent.com/6400195/169651273-5db919df-5ff1-4caa-bb8b-1e74d6727c2e.png">
 
@@ -89,7 +89,7 @@ struct ContentView: View {
     var body: some View {
         
         Text("Come with me, and see what has been foretold...")
-            .retroText(font: .pixelEmulator)
+            .retroFont(.pixelEmulator)
             .padding()
         
     }
@@ -107,7 +107,7 @@ struct ContentView: View {
     var body: some View {
         
         Text("Come with me, and see what has been foretold...")
-            .retroText(font: .pixelEmulator, size: 18.0)
+            .retroFont(.pixelEmulator, size: 18.0)
             .padding()
         
     }
@@ -117,6 +117,8 @@ struct ContentView: View {
 
 <img width="154" alt="example3" src="https://user-images.githubusercontent.com/6400195/169651305-12d154de-6451-4c6f-a584-796d5445109d.png">
 
+Note that you are not limited to using the `.retroFont()` view modifier; within your own app, you can [add a custom font](https://betterprogramming.pub/swiftui-basics-importing-custom-fonts-b6396d17424d) and apply it as desired. Here are some examples of [retro-style typefaces available](https://www.1001fonts.com/retro+1980s-fonts.html) for download.
+
 ### Usage for Live Typing Effect
 
 A common technique in classic video games was to have dialogue from the game be "spoken" to the player as a typing animation.
@@ -125,15 +127,14 @@ A common technique in classic video games was to have dialogue from the game be 
 
 Be sure to read [Christopher Boynton's original article on Medium](https://medium.com/@cboynton/achieving-a-type-on-text-effect-in-swift-6934b683d1e9), from which the image above was sourced, and from which the core concepts for this package were adapted.
 
-The typing effect alone can be achieved in your app like so – note that the `.retroTextTypeEffect()` view modifier replaces the `EmptyView` with an `HStack` and an embeded `Text` view, which display the message.
+The typing effect alone can be achieved in your app like so:
 
 ```swift
 
 struct ContentView: View {
     var body: some View {
         
-        EmptyView()
-            .retroTextTypeEffect()
+        TypedText()
             .padding()
         
     }
@@ -142,16 +143,15 @@ struct ContentView: View {
 ```
 <img height="600" alt="example-i" src="https://user-images.githubusercontent.com/6400195/169653240-abd48793-6a8d-412f-aaf3-5e6593cf7ebc.gif">
 
-To show this with a classic video game font, apply the `.retroText` view modifier:
+To show this with a classic video game font, apply the `.retroFont` view modifier:
 
 ```swift
 
 struct ContentView: View {
     var body: some View {
         
-        EmptyView()
-            .retroTextTypeEffect()
-            .retroText()
+        TypedText()
+            .retroFont()
             .padding()
         
     }
@@ -168,10 +168,8 @@ Of course, the message, speed of typing effect, font, and font size can be custo
 struct ContentView: View {
     var body: some View {
         
-        EmptyView()
-            .retroTextTypeEffect(message: "Behold... the coming of a new queen!",
-                                 speed: .fast)
-            .retroText(font: .pixelEmulator, size: 24.0)
+        TypedText("Behold... the coming of a new queen!", speed: .fast)
+            .retroFont(.pixelEmulator, size: 24.0)
             .padding()
         
     }
@@ -179,7 +177,7 @@ struct ContentView: View {
 
 ```
 
-<img height="600" alt="example-iii" src="https://user-images.githubusercontent.com/6400195/169653446-365dd3ca-3446-4e30-811a-896375019025.gif">
+<img height="600" alt="example-iii" src="https://user-images.githubusercontent.com/6400195/169661710-cc7bd28f-9d73-4121-a6b9-4aae5e853069.gif">
 
 Finally, you can use `#` marks to introduce a slight pause for the typing effect. This can be used to build tension or drama:
 
@@ -188,25 +186,23 @@ Finally, you can use `#` marks to introduce a slight pause for the typing effect
 struct ContentView: View {
     var body: some View {
         
-        EmptyView()
-            .retroTextTypeEffect(message: "Behold#.#.#. the coming of a new### queen###!",
-                                 speed: .normal)
-            .retroText(font: .pixelEmulator, size: 24.0)
+        TypedText("Behold#.#.#. the coming of a new### queen###!", speed: .normal)
+            .retroFont(.pixelEmulator, size: 24.0)
             .padding()
         
     }
 }
 ```
 
-<img height="600" alt="example-iv" src="https://user-images.githubusercontent.com/6400195/169653723-403d2556-c8c1-47e5-8a02-b6c6d48243d5.gif">
+<img height="600" alt="example-iv" src="https://user-images.githubusercontent.com/6400195/169661637-991d9571-14db-49cd-a198-f410e39f672f.gif">
 
 ## Acknowledgements
 
-This module was created by mashing together ideas from tutorials authored by several generous individuals.
+This package was created by mashing together ideas from tutorials authored by several generous individuals.
 
 In no particular order:
 
 * [Achieving a Type-On Text Effect in Swift](https://medium.com/@cboynton/achieving-a-type-on-text-effect-in-swift-6934b683d1e9) by [Christopher Boynton](https://medium.com/@cboynton)
 * [Create your own Swift Package | Xcode, SPM, Swift Tutorial](https://www.youtube.com/watch?v=CekYZzsXmII) by [Florian Schweizer](https://twitter.com/FloWritesCode)
-* [Packaging your Custom Fonts in Swift Packages](https://jacobzivandesign.com/technology/custom-fonts-from-swift-package/) [Jacob Rakidzich](https://github.com/JZDesign/)
+* [Packaging your Custom Fonts in Swift Packages](https://jacobzivandesign.com/technology/custom-fonts-from-swift-package/) by [Jacob Rakidzich](https://github.com/JZDesign/)
 * [SwiftUI Custom View Modifiers](https://useyourloaf.com/blog/swiftui-custom-view-modifiers/) by [Keith Harrison](https://twitter.com/kharrison)
