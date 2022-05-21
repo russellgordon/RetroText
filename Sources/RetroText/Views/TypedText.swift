@@ -138,7 +138,18 @@ public struct TypedText: View {
         
     }
     
-    /// Creates a "typed on" effect where each letter of the message is revealed over time, as controlled by the given message and speed arguments.
+    /// Creates a "typed on" effect where each letter of the message is revealed over time, as controlled by the given message, speed, and debug arguments.
+    ///
+    /// You can use `#` signs to introduce a pause as letters are typed, which can build tension or create drama.
+    /// For example:
+    /// ```
+    /// struct ContentView: View {
+    ///     var body: some View {
+    ///         TypedText("Come with me###, and see what has been foretold#.#.#.")
+    ///             .padding()
+    ///     }
+    /// }
+    /// ```
     /// - Parameters:
     ///   - message: What message should be typed on the screen.
     ///   - speed: How fast the message should be typed.
@@ -159,7 +170,18 @@ public struct TypedText: View {
         
     }
     
-    /// Creates a "typed on" effect where each letter of the message is revealed over time, as controlled by the given message and speed arguments.
+    /// Creates a "typed on" effect where each letter of the message is revealed over time, as controlled by the given message, speed, and debug arguments.
+    ///
+    /// You can use `#` signs to introduce a pause as letters are typed, which can build tension or create drama.
+    /// For example:
+    /// ```
+    /// struct ContentView: View {
+    ///     var body: some View {
+    ///         TypedText("Come with me###, and see what has been foretold#.#.#.")
+    ///             .padding()
+    ///     }
+    /// }
+    /// ```
     /// - Parameter message: What message should be typed on the screen.
     public init(_ message: String = "Come with me###, and see what has been foretold#.#.#.") {
         
