@@ -1,6 +1,6 @@
 # RetroText
 
-Makes a SwiftUI `Text` view behave like text from a classic video game.
+Easily use classic video game-style text in your SwiftUI application.
 
 ## Installation
 
