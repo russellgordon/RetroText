@@ -18,8 +18,8 @@ Up top, import the RetroText package. Then, add an initializer function and use 
 
 ```swift
 
-import SwiftUI
 import RetroText
+import SwiftUI
 
 @main
 struct PipersAdventureApp: App {
