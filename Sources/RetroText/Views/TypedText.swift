@@ -9,17 +9,15 @@ import Foundation
 import SwiftUI
 
 /// Creates a "typed on" effect where each letter of the message is revealed over time.
-///
-/// A text view draws a string in your app's user interface using a
-/// ``Font/body`` font that's appropriate for the current platform. You can
-/// choose a different standard font, like ``Font/title`` or ``Font/caption``,
-/// using the ``View/font(_:)`` view modifier.
-///
-///     Text("Hamlet")
-///         .font(.title)
-///
-/// ![A text view showing the name "Hamlet" in a title
-/// font.](SwiftUI-Text-title.png)
+/// 
+/// You can use `#` signs to introduce a pause as letters are typed, which can build tension or create drama.
+/// For example:
+///     struct ContentView: View {
+///         var body: some View {
+///            TypedText("Come with me###, and see what has been foretold#.#.#.")
+///            .padding()
+///         }
+///     }
 public struct TypedText: View {
     
     // MARK: Stored properties
