@@ -59,6 +59,8 @@ struct ContentView: View {
 
 All that the `.retroText()` view modifier does is apply one of the custom fonts that is bundled with this module.
 
+<img width="154" alt="example1" src="https://user-images.githubusercontent.com/6400195/169651273-5db919df-5ff1-4caa-bb8b-1e74d6727c2e.png">
+
 As desired, you can adjust the typeface:
 
 ```swift
@@ -74,6 +76,8 @@ struct ContentView: View {
 }
 
 ```
+
+<img width="154" alt="example2" src="https://user-images.githubusercontent.com/6400195/169651292-73b68860-5c93-49e2-bf54-bcd9640506eb.png">
 
 Or both the typeface and size:
 
@@ -91,6 +95,7 @@ struct ContentView: View {
 
 ```
 
+<img width="154" alt="example3" src="https://user-images.githubusercontent.com/6400195/169651305-12d154de-6451-4c6f-a584-796d5445109d.png">
 
 ## Acknowledgements
 
