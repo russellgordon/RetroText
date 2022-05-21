@@ -46,13 +46,13 @@ To make static retro-style text appear with reasonable defaults for typeface and
 ```swift
 
 struct ContentView: View {
-    
     var body: some View {
+        
         Text("Come with me, and see what has been foretold...")
             .retroText()
             .padding()
+        
     }
-    
 }
 
 ```
@@ -66,7 +66,7 @@ As desired, you can adjust the typeface:
 struct ContentView: View {
     var body: some View {
         
-        Text("Come with me, and see what been foretold...")
+        Text("Come with me, and see what has been foretold...")
             .retroText(font: .pixelEmulator)
             .padding()
         
@@ -82,8 +82,8 @@ Or both the typeface and size:
 struct ContentView: View {
     var body: some View {
         
-        Text("Come with me, and see what been foretold...")
-            .retroText(font: .pixelEmulator, size: 12.0)
+        Text("Come with me, and see what has been foretold...")
+            .retroText(font: .pixelEmulator, size: 18.0)
             .padding()
         
     }
