@@ -37,7 +37,7 @@ public struct TypedText: View {
     let debug: Bool
     
     // An array of characters that form the message to be shown
-    var characterArray = Array("")
+    @State var characterArray = Array("")
     
     // Counter to control timing
     @State var timingCounter = 0
