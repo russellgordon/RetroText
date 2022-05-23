@@ -37,7 +37,7 @@ public struct TypedText: View {
     let debug: Bool
     
     // An array of characters that form the message to be shown
-    @State var characterArray = Array("")
+    @State var characterArray: [Character] = []
     
     // Counter to control timing
     @State var timingCounter = 0
@@ -138,8 +138,10 @@ public struct TypedText: View {
         self.debug = debug
 
         // Set the array of characters
-        characterArray = Array(message)
-        
+        for character in message {
+            characterArray.append(contentsOf: characterArray)
+        }
+
     }
     
     /// Creates a "typed on" effect where each letter of the message is revealed over time, as controlled by the given message, speed, and debug arguments.
@@ -170,8 +172,10 @@ public struct TypedText: View {
         self.debug = false
 
         // Set the array of characters
-        characterArray = Array(message)
-        
+        for character in message {
+            characterArray.append(contentsOf: characterArray)
+        }
+
     }
     
     /// Creates a "typed on" effect where each letter of the message is revealed over time, as controlled by the given message, speed, and debug arguments.
@@ -201,7 +205,9 @@ public struct TypedText: View {
 
         // Set the array of characters
         dump("message is: \(message)")
-        characterArray = Array(message)
+        for character in message {
+            characterArray.append(contentsOf: characterArray)
+        }
         dump("character array is: \(characterArray)")
         
     }
