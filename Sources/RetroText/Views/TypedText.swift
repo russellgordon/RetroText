@@ -62,7 +62,7 @@ public struct TypedText: View {
                 .onReceive(timer) { input in
                     
                     // Skip spaces
-                    while characterArray[characterIndex] == " " && !characterArray.isEmpty  {
+                    while !characterArray.isEmpty && characterArray[characterIndex] == " " {
                         textToShow.append(" ")
                         characterIndex += 1
                         
