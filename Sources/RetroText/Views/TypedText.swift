@@ -202,6 +202,8 @@ public struct TypedText: View {
         // Set the array of characters
         characterArray = Array(message)
         
+        dump(characterArray)
+        
     }
     
 }
