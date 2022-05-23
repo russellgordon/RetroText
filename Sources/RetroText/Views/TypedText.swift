@@ -200,9 +200,9 @@ public struct TypedText: View {
         self.debug = false
 
         // Set the array of characters
+        dump("message is: \(message)")
         characterArray = Array(message)
-        
-        dump(characterArray)
+        dump("character array is: \(characterArray)")
         
     }
     
