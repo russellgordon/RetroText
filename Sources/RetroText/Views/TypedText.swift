@@ -81,7 +81,7 @@ public struct TypedText: View {
                     if timingCounter.isMultiple(of: speed.rawValue) {
 
                         // Only animate letters (pause when hash sign found)
-                        if characterArray[characterIndex] != "#" {
+                        if !characterArray.isEmpty && characterArray[characterIndex] != "#" {
                             // Add one more letter to the text view
                             textToShow.append(characterArray[characterIndex])
                         }
