@@ -62,16 +62,18 @@ public struct TypedText: View {
                 .onReceive(timer) { input in
                     
                     // Skip spaces
-                    while !characterArray.isEmpty && characterArray[characterIndex] == " " {
-                        textToShow.append(" ")
-                        characterIndex += 1
-                        
-                        // Stop the timer if at the end of the message
-                        if characterIndex == characterArray.count {
-                            timer.upstream.connect().cancel()
-                            return
+                    if !characterArray.isEmpty {
+                        while characterArray[characterIndex] == " " {
+                            textToShow.append(" ")
+                            characterIndex += 1
+                            
+                            // Stop the timer if at the end of the message
+                            if characterIndex == characterArray.count {
+                                timer.upstream.connect().cancel()
+                                return
+                            }
+                            
                         }
-                        
                     }
                     
                     // Increment timing counter
