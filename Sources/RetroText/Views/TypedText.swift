@@ -28,7 +28,7 @@ public struct TypedText: View {
     // MARK: Stored properties
 
     // The message to be "typed" on to the screen
-    @State var message: String
+    let message: String
 
     // How fast to type the text
     let speed: RetroTextTypeEffectSpeed
