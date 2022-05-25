@@ -139,7 +139,7 @@ public struct TypedText: View {
 
         // Set the array of characters
         for character in message {
-            characterArray.append(contentsOf: characterArray)
+            characterArray.append(character)
         }
 
     }
@@ -173,7 +173,7 @@ public struct TypedText: View {
 
         // Set the array of characters
         for character in message {
-            characterArray.append(contentsOf: characterArray)
+            characterArray.append(character)
         }
 
     }
@@ -206,10 +206,10 @@ public struct TypedText: View {
         // Set the array of characters
         dump("message is: \(message)")
         for character in message {
-            characterArray.append(contentsOf: characterArray)
+            characterArray.append(character)
         }
         dump("character array is: \(characterArray)")
-        
+        dump("Array(message) is: \(dump(Array(message)))")
     }
     
 }
