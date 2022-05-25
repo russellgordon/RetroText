@@ -36,9 +36,6 @@ public struct TypedText: View {
     // Whether to show a bounding box around the view that contains the typed text
     let debug: Bool
     
-    // An array of characters that form the message to be shown
-    var characterArray = Array("")
-    
     // Counter to control timing
     @State var timingCounter = 0
     
@@ -62,16 +59,18 @@ public struct TypedText: View {
                 .onReceive(timer) { input in
                     
                     // Skip spaces
-                    while characterArray[characterIndex] == " " {
-                        textToShow.append(" ")
-                        characterIndex += 1
-                        
-                        // Stop the timer if at the end of the message
-                        if characterIndex == characterArray.count {
-                            timer.upstream.connect().cancel()
-                            return
+                    if !message.isEmpty {
+                        while message[characterIndex] == " " {
+                            textToShow.append(" ")
+                            characterIndex += 1
+                            
+                            // Stop the timer if at the end of the message
+                            if characterIndex == message.count {
+                                timer.upstream.connect().cancel()
+                                return
+                            }
+                            
                         }
-                        
                     }
                     
                     // Increment timing counter
@@ -81,16 +80,18 @@ public struct TypedText: View {
                     if timingCounter.isMultiple(of: speed.rawValue) {
 
                         // Only animate letters (pause when hash sign found)
-                        if characterArray[characterIndex] != "#" {
-                            // Add one more letter to the text view
-                            textToShow.append(characterArray[characterIndex])
+                        if !message.isEmpty {
+                            if message[characterIndex] != "#" {
+                                // Add one more letter to the text view
+                                textToShow.append(message[characterIndex])
+                            }
                         }
                         
                         // Advance to next letter
                         characterIndex += 1
                         
                         // Stop the timer if at the end of the message
-                        if characterIndex == characterArray.count {
+                        if characterIndex == message.count {
                             timer.upstream.connect().cancel()
                         }
 
@@ -133,9 +134,6 @@ public struct TypedText: View {
         // Whether to show the frame of the text view
         self.debug = debug
 
-        // Set the array of characters
-        characterArray = Array(message)
-        
     }
     
     /// Creates a "typed on" effect where each letter of the message is revealed over time, as controlled by the given message, speed, and debug arguments.
@@ -165,9 +163,6 @@ public struct TypedText: View {
         // Whether to show the frame of the text view
         self.debug = false
 
-        // Set the array of characters
-        characterArray = Array(message)
-        
     }
     
     /// Creates a "typed on" effect where each letter of the message is revealed over time, as controlled by the given message, speed, and debug arguments.
@@ -195,9 +190,6 @@ public struct TypedText: View {
         // Whether to show the frame of the text view
         self.debug = false
 
-        // Set the array of characters
-        characterArray = Array(message)
-        
     }
     
 }
