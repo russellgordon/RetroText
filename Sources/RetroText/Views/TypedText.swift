@@ -92,7 +92,7 @@ public struct TypedText: View {
                         
                         // Stop the timer if at the end of the message
                         if characterIndex == message.count {
-                            timer?.invalidate()
+                            timer.invalidate()
                         }
 
                     }
