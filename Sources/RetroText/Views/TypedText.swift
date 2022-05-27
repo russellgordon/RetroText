@@ -203,6 +203,9 @@ public struct TypedText: View {
         // Whether to show the frame of the text view
         self.debug = debug
         
+        // Whether typing has finished
+        self.typingHasFinished = typingHasFinished
+
     }
     
     /// Creates a "typed on" effect where each letter of the message is revealed over time, as controlled by the given message, speed, and debug arguments.
@@ -233,6 +236,8 @@ public struct TypedText: View {
         // Whether to show the frame of the text view
         self.debug = false
         
+        // Whether typing has finished
+        self.typingHasFinished = typingHasFinished
     }
     
     /// Creates a "typed on" effect where each letter of the message is revealed over time, as controlled by the given message, speed, and debug arguments.
@@ -260,6 +265,9 @@ public struct TypedText: View {
 
         // Whether to show the frame of the text view
         self.debug = false
+        
+        // Whether typing has finished
+        self.typingHasFinished = typingHasFinished
 
     }
     
