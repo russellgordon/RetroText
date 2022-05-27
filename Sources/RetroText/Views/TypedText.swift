@@ -45,10 +45,10 @@ public struct TypedText: View {
     // Extra spaces added to force text view to be as wide
     // as possible to avoid wrapping issues when text is revealed
     // TODO: Fix this hack; the number of spaces is a guess and probably won't work for all device sizes
-    @State var textToShow = "                                                                                                                                        "
+    @State var textToShow = leadingSpaces
     
     // Drives the reveal of each character
-    @State var timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
 
     // MARK: Computed properties
     public var body: some View {
