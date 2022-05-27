@@ -100,7 +100,7 @@ public struct TypedText: View {
                                 // Pause on period
                                 if message[characterIndex] == "." &&
                                     characterIndex + 1 < message.count &&
-                                    message[characterIndex + 1] = " " {
+                                    message[characterIndex + 1] == " " {
                                     Task {
                                         try await Task.sleep(nanoseconds: 1_000_000_000)
                                     }
