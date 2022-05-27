@@ -68,7 +68,7 @@ public struct TypedText: View {
                 .border(.red, width: debug ? 1.0 : 0.0)
                 .onReceive(timer) { _ in
                     
-                    // Stop updated when message has finished typing
+                    // Stop updating when message has finished typing
                     // NOTE: Not sure why this should be necessary as the timer should have stopped firing by now
                     if typingHasFinished {
                         timer.upstream.connect().cancel()
