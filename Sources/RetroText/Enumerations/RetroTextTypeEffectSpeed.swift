@@ -9,7 +9,8 @@ import Foundation
 
 // Control typing speed
 public enum RetroTextTypeEffectSpeed: Int {
-    case fast = 1
-    case normal = 2
-    case slow = 3
+    case reallyFast = 1
+    case fast = 2
+    case normal = 4
+    case slow = 6
 }

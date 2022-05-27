@@ -46,13 +46,16 @@ public struct TypedText: View {
     // What character we are currently showing
     @State var characterIndex = 0
     
+    // Countdown for pause on period characters
+    @State var periodCharacterCountdown = periodCharacterCountdownStartingValue
+    
     // Extra spaces added to force text view to be as wide
     // as possible to avoid wrapping issues when text is revealed
     // TODO: Fix this hack; the number of spaces is a guess and probably won't work for all device sizes
     @State var textToShow = leadingSpaces
     
     // Drives the reveal of each character
-    let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
 
     // MARK: Computed properties
     public var body: some View {
@@ -96,13 +99,41 @@ public struct TypedText: View {
                         // Only animate letters (pause when hash sign found)
                         if !message.isEmpty {
                             if message[characterIndex] != "#" {
-                                // Add one more letter to the text view
-                                textToShow.append(message[characterIndex])
+                                
+                                // Pause on period
+                                if message[characterIndex] == "." &&
+                                    characterIndex + 1 < message.count &&
+                                    message[characterIndex + 1] == " " {
+                                    
+                                    // Show period
+                                    if periodCharacterCountdown == periodCharacterCountdownStartingValue {
+
+                                        // Add the period to the text view
+                                        textToShow.append(message[characterIndex])
+
+                                    }
+                                    
+                                    // Skip 10 updates when period character found (end of sentence)
+                                    if periodCharacterCountdown > 0 {
+                                        periodCharacterCountdown -= 1
+                                        return
+                                    }
+                                    
+                                } else {
+                                    
+                                    // Add one more letter to the text view
+                                    textToShow.append(message[characterIndex])
+
+                                }
+                                
                             }
                         }
                         
                         // Advance to next letter
                         characterIndex += 1
+                        
+                        // Reset period character countdown
+                        periodCharacterCountdown = periodCharacterCountdownStartingValue
                         
                         // Stop the timer if at the end of the message
                         if characterIndex == message.count {
@@ -220,6 +251,9 @@ public struct TypedText: View {
         
         // Extra spaces added to force text view to be as wide
         textToShow = leadingSpaces
+        
+        // Reset period character countdown
+        periodCharacterCountdown = periodCharacterCountdownStartingValue
 
     }
     

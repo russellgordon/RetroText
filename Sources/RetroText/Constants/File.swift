@@ -8,3 +8,5 @@
 import Foundation
 
 let leadingSpaces = "                                                                                                                                        "
+
+let periodCharacterCountdownStartingValue = 8
