@@ -125,6 +125,16 @@ public struct TypedText: View {
                                             }
                                         }
                                         
+                                    } else if characterIndex + 1 == message.count {
+                                        
+                                        // Show the final period
+                                        if periodCharacterCountdown == periodCharacterCountdownStartingValue {
+                                            
+                                            // Add the period to the text view
+                                            textToShow.append(message[characterIndex])
+                                            
+                                        }
+
                                     }
 
                                 } else {
