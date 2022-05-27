@@ -46,6 +46,9 @@ public struct TypedText: View {
     // What character we are currently showing
     @State var characterIndex = 0
     
+    // Countdown for pause on period characters
+    @State var periodCharacterCountdown = 10
+    
     // Extra spaces added to force text view to be as wide
     // as possible to avoid wrapping issues when text is revealed
     // TODO: Fix this hack; the number of spaces is a guess and probably won't work for all device sizes
@@ -101,9 +104,13 @@ public struct TypedText: View {
                                 if message[characterIndex] == "." &&
                                     characterIndex + 1 < message.count &&
                                     message[characterIndex + 1] == " " {
-                                    Task {
-                                        try await Task.sleep(nanoseconds: 1_000_000_000)
+                                    
+                                    // Skip 10 updates when period character found (end of sentence)
+                                    if periodCharacterCountdown > 0 {
+                                        periodCharacterCountdown -= 1
+                                        return
                                     }
+                                    
                                 }
                                 
                                 // Add one more letter to the text view
@@ -113,6 +120,9 @@ public struct TypedText: View {
                         
                         // Advance to next letter
                         characterIndex += 1
+                        
+                        // Reset period character countdown
+                        periodCharacterCountdown = 10
                         
                         // Stop the timer if at the end of the message
                         if characterIndex == message.count {
@@ -230,6 +240,9 @@ public struct TypedText: View {
         
         // Extra spaces added to force text view to be as wide
         textToShow = leadingSpaces
+        
+        // Reset period character countdown
+        periodCharacterCountdown = 10
 
     }
     
