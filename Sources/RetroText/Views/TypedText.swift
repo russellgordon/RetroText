@@ -47,7 +47,7 @@ public struct TypedText: View {
     @State var characterIndex = 0
     
     // Countdown for pause on period characters
-    @State var periodCharacterCountdown = 8
+    @State var periodCharacterCountdown = periodCharacterCountdownStartingValue
     
     // Extra spaces added to force text view to be as wide
     // as possible to avoid wrapping issues when text is revealed
@@ -106,7 +106,7 @@ public struct TypedText: View {
                                     message[characterIndex + 1] == " " {
                                     
                                     // Show period
-                                    if periodCharacterCountdown == 10 {
+                                    if periodCharacterCountdown == periodCharacterCountdownStartingValue {
 
                                         // Add the period to the text view
                                         textToShow.append(message[characterIndex])
@@ -133,7 +133,7 @@ public struct TypedText: View {
                         characterIndex += 1
                         
                         // Reset period character countdown
-                        periodCharacterCountdown = 8
+                        periodCharacterCountdown = periodCharacterCountdownStartingValue
                         
                         // Stop the timer if at the end of the message
                         if characterIndex == message.count {
@@ -253,7 +253,7 @@ public struct TypedText: View {
         textToShow = leadingSpaces
         
         // Reset period character countdown
-        periodCharacterCountdown = 8
+        periodCharacterCountdown = periodCharacterCountdownStartingValue
 
     }
     
