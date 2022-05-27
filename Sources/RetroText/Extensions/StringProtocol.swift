@@ -15,7 +15,7 @@ extension StringProtocol {
         if offset < self.count {
             return self[index(startIndex, offsetBy: offset)]
         } else {
-            return " "
+            return "~"
         }
     }
     
