@@ -37,10 +37,10 @@ public struct TypedText: View {
     let debug: Bool
     
     // Counter to control timing
-    var timingCounter = 0
+    @State var timingCounter = 0
     
     // What character we are currently showing
-    var characterIndex = 0
+    @State var characterIndex = 0
     
     // Extra spaces added to force text view to be as wide
     // as possible to avoid wrapping issues when text is revealed
@@ -92,7 +92,7 @@ public struct TypedText: View {
                         
                         // Stop the timer if at the end of the message
                         if characterIndex == message.count {
-                            timer.upstream.connect().cancel()
+                            timer?.invalidate()
                         }
 
                     }
@@ -133,6 +133,8 @@ public struct TypedText: View {
 
         // Whether to show the frame of the text view
         self.debug = debug
+        
+        
 
     }
     
