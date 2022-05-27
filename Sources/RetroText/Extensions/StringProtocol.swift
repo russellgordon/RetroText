@@ -14,6 +14,8 @@ extension StringProtocol {
     subscript(offset: Int) -> Character {
         if offset < self.count {
             return self[index(startIndex, offsetBy: offset)]
+        } else {
+            return " "
         }
     }
     
