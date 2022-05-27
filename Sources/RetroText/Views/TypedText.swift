@@ -70,6 +70,9 @@ public struct TypedText: View {
                         resetProperties()
                     }
                     
+                    // Track the message currently being shown
+                    oldMessage = message
+                    
                     // Skip spaces
                     if !message.isEmpty {
                         while message[characterIndex] == " " {
@@ -101,24 +104,39 @@ public struct TypedText: View {
                             if message[characterIndex] != "#" {
                                 
                                 // Pause on period
-                                if message[characterIndex] == "." &&
-                                    characterIndex + 1 < message.count &&
-                                    message[characterIndex + 1] == " " {
+                                if message[characterIndex] == "." {
                                     
-                                    // Show period
-                                    if periodCharacterCountdown == periodCharacterCountdownStartingValue {
-
-                                        // Add the period to the text view
-                                        textToShow.append(message[characterIndex])
+                                    if characterIndex + 1 < message.count {
+                                        
+                                        if message[characterIndex + 1] == " " {
+                                            
+                                            // Show period
+                                            if periodCharacterCountdown == periodCharacterCountdownStartingValue {
+                                                
+                                                // Add the period to the text view
+                                                textToShow.append(message[characterIndex])
+                                                
+                                            }
+                                            
+                                            // Skip 10 updates when period character found (end of sentence)
+                                            if periodCharacterCountdown > 0 {
+                                                periodCharacterCountdown -= 1
+                                                return
+                                            }
+                                        }
+                                        
+                                    } else if characterIndex + 1 == message.count {
+                                        
+                                        // Show the final period
+                                        if periodCharacterCountdown == periodCharacterCountdownStartingValue {
+                                            
+                                            // Add the period to the text view
+                                            textToShow.append(message[characterIndex])
+                                            
+                                        }
 
                                     }
-                                    
-                                    // Skip 10 updates when period character found (end of sentence)
-                                    if periodCharacterCountdown > 0 {
-                                        periodCharacterCountdown -= 1
-                                        return
-                                    }
-                                    
+
                                 } else {
                                     
                                     // Add one more letter to the text view
@@ -141,9 +159,6 @@ public struct TypedText: View {
                         }
 
                     }
-                    
-                    // Track the message currently being shown
-                    oldMessage = message
                     
                 }
 
