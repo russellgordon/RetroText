@@ -54,6 +54,9 @@ public struct TypedText: View {
     // TODO: Fix this hack; the number of spaces is a guess and probably won't work for all device sizes
     @State var textToShow = leadingSpaces
     
+    // Allows this view to communicate to the call site when it's "done typing"
+    @Binding typingHasFinished: Bool
+    
     // Drives the reveal of each character
     let timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
 
@@ -87,6 +90,7 @@ public struct TypedText: View {
 
                                 // Cancel the timer
                                 timer.upstream.connect().cancel()
+                                typingHasFinished = true
                                 return
                             }
                             
@@ -156,6 +160,7 @@ public struct TypedText: View {
                         // Stop the timer if at the end of the message
                         if characterIndex == message.count {
                             timer.upstream.connect().cancel()
+                            typingHasFinished = true
                         }
 
                     }
@@ -186,7 +191,8 @@ public struct TypedText: View {
     ///   - debug: Whether to show a red border around the view; useful for debugging potential layout issues.
     public init(_ message: String = "Come with me###, and see what has been foretold#.#.#.",
                 speed: RetroTextTypeEffectSpeed = .normal,
-                debug: Bool = false) {
+                debug: Bool = false,
+                typingHasFinished: Bool = .constant(false)) {
         
         // Set the message
         self.message = message
@@ -215,7 +221,8 @@ public struct TypedText: View {
     ///   - message: What message should be typed on the screen.
     ///   - speed: How fast the message should be typed.
     public init(_ message: String = "Come with me###, and see what has been foretold#.#.#.",
-                speed: RetroTextTypeEffectSpeed = .normal) {
+                speed: RetroTextTypeEffectSpeed = .normal,
+                typingHasFinished: Bool = .constant(false)) {
         
         // Set the message
         self.message = message
@@ -242,7 +249,8 @@ public struct TypedText: View {
     /// ```
     /// - Parameters:
     ///   - message: What message should be typed on the screen.
-    public init(_ message: String = "Come with me###, and see what has been foretold#.#.#.") {
+    public init(_ message: String = "Come with me###, and see what has been foretold#.#.#.",
+                typingHasFinished: Bool = .constant(false)) {
         
         // Set the message
         self.message = message
@@ -269,6 +277,9 @@ public struct TypedText: View {
         
         // Reset period character countdown
         periodCharacterCountdown = periodCharacterCountdownStartingValue
+        
+        // Typing has restarted
+        typingHasFinished = false
 
     }
     
