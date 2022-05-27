@@ -68,6 +68,7 @@ public struct TypedText: View {
                     // When the message has changed under our feet...
                     if oldMessage != message {
                         resetProperties()
+                        timer.upstream.connect().cancel()
                         return
                     }
                     
