@@ -35,6 +35,10 @@ public struct TypedText: View {
 
     // Whether to show a bounding box around the view that contains the typed text
     let debug: Bool
+
+    // Used to keep track of when the message has changed
+    // Need this to reset control 🤔
+    @State var oldMessage = ""
     
     // Counter to control timing
     @State var timingCounter = 0
@@ -58,6 +62,11 @@ public struct TypedText: View {
                 .border(.red, width: debug ? 1.0 : 0.0)
                 .onReceive(timer) { _ in
                     
+                    // When the message has changed under our feet...
+                    if oldMessage != message {
+                        resetProperties()
+                    }
+                    
                     // Skip spaces
                     if !message.isEmpty {
                         while message[characterIndex] == " " {
@@ -66,6 +75,11 @@ public struct TypedText: View {
                             
                             // Stop the timer if at the end of the message
                             if characterIndex == message.count {
+
+                                // Track the message currently being shown
+                                oldMessage = message
+
+                                // Cancel the timer
                                 timer.upstream.connect().cancel()
                                 return
                             }
@@ -96,6 +110,9 @@ public struct TypedText: View {
                         }
 
                     }
+                    
+                    // Track the message currently being shown
+                    oldMessage = message
                     
                 }
 
@@ -134,9 +151,6 @@ public struct TypedText: View {
         // Whether to show the frame of the text view
         self.debug = debug
         
-        // Clear other properties when view is being re-used
-        resetProperties()
-
     }
     
     /// Creates a "typed on" effect where each letter of the message is revealed over time, as controlled by the given message, speed, and debug arguments.
@@ -166,9 +180,6 @@ public struct TypedText: View {
         // Whether to show the frame of the text view
         self.debug = false
         
-        // Clear other properties when view is being re-used
-        resetProperties()
-
     }
     
     /// Creates a "typed on" effect where each letter of the message is revealed over time, as controlled by the given message, speed, and debug arguments.
@@ -195,12 +206,10 @@ public struct TypedText: View {
 
         // Whether to show the frame of the text view
         self.debug = false
-        
-        // Clear other properties when view is being re-used
-        resetProperties()
 
     }
     
+    // Clear other properties when view is being re-used
     fileprivate func resetProperties() {
 
         // Counter to control timing
