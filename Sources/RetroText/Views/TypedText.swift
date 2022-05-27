@@ -96,6 +96,16 @@ public struct TypedText: View {
                         // Only animate letters (pause when hash sign found)
                         if !message.isEmpty {
                             if message[characterIndex] != "#" {
+                                
+                                // Pause on period
+                                if message[characterIndex] == "." &&
+                                    characterIndex + 1 < message.count &&
+                                    message[characterIndex + 1] = " " {
+                                    Task {
+                                        try await Task.sleep(nanoseconds: 1_000_000_000)
+                                    }
+                                }
+                                
                                 // Add one more letter to the text view
                                 textToShow.append(message[characterIndex])
                             }
