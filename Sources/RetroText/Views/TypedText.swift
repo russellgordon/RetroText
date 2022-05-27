@@ -92,7 +92,7 @@ public struct TypedText: View {
                         
                         // Stop the timer if at the end of the message
                         if characterIndex == message.count {
-                            timer.invalidate()
+                            timer.upstream.connect().cancel()
                         }
 
                     }
@@ -134,7 +134,8 @@ public struct TypedText: View {
         // Whether to show the frame of the text view
         self.debug = debug
         
-        
+        // Clear other properties when view is being re-used
+        resetProperties()
 
     }
     
@@ -164,6 +165,9 @@ public struct TypedText: View {
 
         // Whether to show the frame of the text view
         self.debug = false
+        
+        // Clear other properties when view is being re-used
+        resetProperties()
 
     }
     
@@ -191,6 +195,22 @@ public struct TypedText: View {
 
         // Whether to show the frame of the text view
         self.debug = false
+        
+        // Clear other properties when view is being re-used
+        resetProperties()
+
+    }
+    
+    fileprivate func resetProperties() {
+
+        // Counter to control timing
+        timingCounter = 0
+        
+        // What character we are currently showing
+        characterIndex = 0
+        
+        // Extra spaces added to force text view to be as wide
+        textToShow = leadingSpaces
 
     }
     
