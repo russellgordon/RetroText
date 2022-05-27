@@ -52,7 +52,7 @@ public struct TypedText: View {
     @State var textToShow = leadingSpaces
     
     // Drives the reveal of each character
-    let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
 
     // MARK: Computed properties
     public var body: some View {
