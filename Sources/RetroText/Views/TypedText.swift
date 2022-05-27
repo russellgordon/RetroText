@@ -192,7 +192,7 @@ public struct TypedText: View {
     public init(_ message: String = "Come with me###, and see what has been foretold#.#.#.",
                 speed: RetroTextTypeEffectSpeed = .normal,
                 debug: Bool = false,
-                typingHasFinished: Bool = .constant(false)) {
+                typingHasFinished: Binding<Bool> = .constant(false)) {
         
         // Set the message
         self.message = message
@@ -222,7 +222,7 @@ public struct TypedText: View {
     ///   - speed: How fast the message should be typed.
     public init(_ message: String = "Come with me###, and see what has been foretold#.#.#.",
                 speed: RetroTextTypeEffectSpeed = .normal,
-                typingHasFinished: Bool = .constant(false)) {
+                typingHasFinished: Binding<Bool> = .constant(false)) {
         
         // Set the message
         self.message = message
@@ -250,7 +250,7 @@ public struct TypedText: View {
     /// - Parameters:
     ///   - message: What message should be typed on the screen.
     public init(_ message: String = "Come with me###, and see what has been foretold#.#.#.",
-                typingHasFinished: Bool = .constant(false)) {
+                typingHasFinished: Binding<Bool> = .constant(false)) {
         
         // Set the message
         self.message = message
