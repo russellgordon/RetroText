@@ -55,7 +55,7 @@ public struct TypedText: View {
     @State var textToShow = leadingSpaces
     
     // Allows this view to communicate to the call site when it's "done typing"
-    var typingHasFinished: Binding<Bool>
+    @Binding var typingHasFinished: Bool
     
     // Drives the reveal of each character
     let timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
