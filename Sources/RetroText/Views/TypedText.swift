@@ -37,10 +37,10 @@ public struct TypedText: View {
     let debug: Bool
     
     // Counter to control timing
-    @State var timingCounter = 0
+    var timingCounter = 0
     
     // What character we are currently showing
-    @State var characterIndex = 0
+    var characterIndex = 0
     
     // Extra spaces added to force text view to be as wide
     // as possible to avoid wrapping issues when text is revealed
