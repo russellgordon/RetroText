@@ -67,10 +67,11 @@ public struct TypedText: View {
                     
                     // When the message has changed under our feet...
                     if oldMessage != message {
-                        oldMessage = message
                         resetProperties()
-                        return
                     }
+                    
+                    // Track the message currently being shown
+                    oldMessage = message
                     
                     // Skip spaces
                     if !message.isEmpty {
@@ -148,9 +149,6 @@ public struct TypedText: View {
                         }
 
                     }
-                    
-                    // Track the message currently being shown
-                    oldMessage = message
                     
                 }
 
