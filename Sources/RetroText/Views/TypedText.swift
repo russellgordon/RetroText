@@ -204,7 +204,7 @@ public struct TypedText: View {
         self.debug = debug
         
         // Whether typing has finished
-        self.typingHasFinished = typingHasFinished
+        self._typingHasFinished = typingHasFinished
 
     }
     
@@ -237,7 +237,7 @@ public struct TypedText: View {
         self.debug = false
         
         // Whether typing has finished
-        self.typingHasFinished = typingHasFinished
+        self._typingHasFinished = typingHasFinished
     }
     
     /// Creates a "typed on" effect where each letter of the message is revealed over time, as controlled by the given message, speed, and debug arguments.
@@ -267,7 +267,7 @@ public struct TypedText: View {
         self.debug = false
         
         // Whether typing has finished
-        self.typingHasFinished = typingHasFinished
+        self._typingHasFinished = typingHasFinished
 
     }
     
