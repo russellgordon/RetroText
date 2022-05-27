@@ -56,7 +56,7 @@ public struct TypedText: View {
         HStack {
             Text(textToShow)
                 .border(.red, width: debug ? 1.0 : 0.0)
-                .onReceive(timer) { input in
+                .onReceive(timer) { _ in
                     
                     // Skip spaces
                     if !message.isEmpty {
