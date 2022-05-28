@@ -83,6 +83,7 @@ public struct TypedText: View {
                         textToShow = leadingSpaces + message
                         timer.upstream.connect().cancel()
                         typingHasFinished = true
+                        skipToEnd = false
                         // Track the message currently being shown
                         oldMessage = message
                         return
