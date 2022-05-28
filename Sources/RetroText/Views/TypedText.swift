@@ -70,13 +70,7 @@ public struct TypedText: View {
             Text(textToShow)
                 .border(.red, width: debug ? 1.0 : 0.0)
                 .onReceive(timer) { _ in
-                    
-                    // Skip to end and stop updating
-                    if skipToEnd == true {
-                        textToShow = leadingSpaces + message
-                        timer.upstream.connect().cancel()
-                    }
-                    
+                                        
                     // Stop updating when message has finished typing
                     // NOTE: Not sure why this should be necessary as the timer should have stopped firing by now
                     if typingHasFinished {
@@ -84,6 +78,14 @@ public struct TypedText: View {
                         return
                     }
                     
+                    // Skip to end and stop updating
+                    if skipToEnd == true {
+                        textToShow = leadingSpaces + message
+                        timer.upstream.connect().cancel()
+                        typingHasFinished = true
+                        return
+                    }
+
                     // When the message has changed under our feet...
                     if oldMessage != message {
                         resetProperties()
