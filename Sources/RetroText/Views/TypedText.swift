@@ -57,6 +57,9 @@ public struct TypedText: View {
     // Allows this view to communicate to the call site when it's "done typing"
     @Binding var typingHasFinished: Bool
     
+    // Allows this view to receive a message and show all remaining text
+    @Binding var skipToEnd: Bool
+    
     // Drives the reveal of each character
     let timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
 
@@ -67,6 +70,12 @@ public struct TypedText: View {
             Text(textToShow)
                 .border(.red, width: debug ? 1.0 : 0.0)
                 .onReceive(timer) { _ in
+                    
+                    // Skip to end and stop updating
+                    if skipToEnd == true {
+                        textToShow = leadingSpaces + message
+                        timer.upstream.connect().cancel()
+                    }
                     
                     // Stop updating when message has finished typing
                     // NOTE: Not sure why this should be necessary as the timer should have stopped firing by now
@@ -199,7 +208,8 @@ public struct TypedText: View {
     public init(_ message: String = "Come with me###, and see what has been foretold#.#.#.",
                 speed: RetroTextTypeEffectSpeed = .normal,
                 debug: Bool = false,
-                typingHasFinished: Binding<Bool> = .constant(false)) {
+                typingHasFinished: Binding<Bool> = .constant(false),
+                skipToEnd: Binding<Bool> = .constant(false)) {
         
         // Set the message
         self.message = message
@@ -232,7 +242,8 @@ public struct TypedText: View {
     ///   - speed: How fast the message should be typed.
     public init(_ message: String = "Come with me###, and see what has been foretold#.#.#.",
                 speed: RetroTextTypeEffectSpeed = .normal,
-                typingHasFinished: Binding<Bool> = .constant(false)) {
+                typingHasFinished: Binding<Bool> = .constant(false),
+                skipToEnd: Binding<Bool> = .constant(false)) {
         
         // Set the message
         self.message = message
@@ -245,6 +256,10 @@ public struct TypedText: View {
         
         // Whether typing has finished
         self._typingHasFinished = typingHasFinished
+        
+        // Whether to skip to the end of the typing
+        self._skipToEnd = skipToEnd
+
     }
     
     /// Creates a "typed on" effect where each letter of the message is revealed over time, as controlled by the given message, speed, and debug arguments.
@@ -262,7 +277,8 @@ public struct TypedText: View {
     /// - Parameters:
     ///   - message: What message should be typed on the screen.
     public init(_ message: String = "Come with me###, and see what has been foretold#.#.#.",
-                typingHasFinished: Binding<Bool> = .constant(false)) {
+                typingHasFinished: Binding<Bool> = .constant(false),
+                skipToEnd: Binding<Bool> = .constant(false)) {
         
         // Set the message
         self.message = message
@@ -276,6 +292,9 @@ public struct TypedText: View {
         // Whether typing has finished
         self._typingHasFinished = typingHasFinished
 
+        // Whether to skip to the end of the typing
+        self._skipToEnd = skipToEnd
+        
     }
     
     // Clear other properties when view is being re-used
@@ -295,6 +314,9 @@ public struct TypedText: View {
         
         // Typing has restarted
         typingHasFinished = false
+        
+        // Whether to skip to the end of the typing
+        self._skipToEnd = skipToEnd
 
     }
     
