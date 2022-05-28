@@ -318,7 +318,7 @@ public struct TypedText: View {
         typingHasFinished = false
         
         // Whether to skip to the end of the typing
-        self._skipToEnd = skipToEnd
+        skipToEnd = false
 
     }
     
