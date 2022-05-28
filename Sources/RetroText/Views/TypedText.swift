@@ -224,7 +224,10 @@ public struct TypedText: View {
         
         // Whether typing has finished
         self._typingHasFinished = typingHasFinished
-
+        
+        // Whether to skip to the end of the typing
+        self._skipToEnd = skipToEnd
+        
     }
     
     /// Creates a "typed on" effect where each letter of the message is revealed over time, as controlled by the given message, speed, and debug arguments.
