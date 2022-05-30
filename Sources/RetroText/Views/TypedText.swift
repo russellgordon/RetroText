@@ -104,6 +104,8 @@ public struct TypedText: View {
                             // Add space characters – skip asterisks
                             if message[characterIndex] == " " {
                                 textToShow.append(" ")
+                            } else if message[characterIndex] == "*" {
+                                textToShow.append("")
                             }
                             characterIndex += 1
                             
