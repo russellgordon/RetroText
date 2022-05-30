@@ -80,7 +80,8 @@ public struct TypedText: View {
                     
                     // Skip to end and stop updating
                     if skipToEnd == true {
-                        textToShow = leadingSpaces + message.replacingOccurrences(of: "*", with: "") // Skip Markdown syntax
+                        // Skip Markdown syntax and replace em-dash with regular dash
+                        textToShow = leadingSpaces + message.replacingOccurrences(of: "*", with: "").replacingOccurrences(of: "–", with: "-")
                         timer.upstream.connect().cancel()
                         typingHasFinished = true
                         skipToEnd = false
