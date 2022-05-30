@@ -99,11 +99,13 @@ public struct TypedText: View {
                     
                     // Don't delay when adding spaces and entirely skip asterisks
                     if !message.isEmpty {
-                        while message[characterIndex] == " " || message[characterIndex] == "*" {
+                        while message[characterIndex] == " " || message[characterIndex] == "*" || message[characterIndex] == "–" {
                             
                             // Add space characters – skip asterisks
                             if message[characterIndex] == " " {
                                 textToShow.append(" ")
+                            } else if message[characterIndex] == "–" {
+                                textToShow.append("-")
                             }
                             characterIndex += 1
                             
