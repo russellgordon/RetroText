@@ -97,10 +97,10 @@ public struct TypedText: View {
                     // Track the message currently being shown
                     oldMessage = message
                     
-                    // Skip spaces
+                    // Skip spaces and asterisks
                     if !message.isEmpty {
-                        while message[characterIndex] == " " {
-                            textToShow.append(" ")
+                        while message[characterIndex] == " " || message[characterIndex] == "*" {
+                            textToShow.append(message[characterIndex])
                             characterIndex += 1
                             
                             // Stop the timer if at the end of the message
