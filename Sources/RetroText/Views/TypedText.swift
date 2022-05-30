@@ -84,8 +84,8 @@ public struct TypedText: View {
                         timer.upstream.connect().cancel()
                         typingHasFinished = true
                         skipToEnd = false
-                        // Track the message currently being shown
-                        oldMessage = message
+                        // Track the message currently being shown (skip Markdown syntax)
+                        oldMessage = message.replacingOccurrences(of: "*", with: "")
                         return
                     }
 
@@ -104,8 +104,6 @@ public struct TypedText: View {
                             // Add space characters – skip asterisks
                             if message[characterIndex] == " " {
                                 textToShow.append(" ")
-                            } else if message[characterIndex] == "*" {
-                                textToShow.append("")
                             }
                             characterIndex += 1
                             
