@@ -80,12 +80,12 @@ public struct TypedText: View {
                     
                     // Skip to end and stop updating
                     if skipToEnd == true {
-                        textToShow = leadingSpaces + message
+                        textToShow = leadingSpaces + message.replacingOccurrences(of: "*", with: "") // Skip Markdown syntax
                         timer.upstream.connect().cancel()
                         typingHasFinished = true
                         skipToEnd = false
-                        // Track the message currently being shown (skip Markdown syntax)
-                        oldMessage = message.replacingOccurrences(of: "*", with: "")
+                        // Track the message currently being shown
+                        oldMessage = message
                         return
                     }
 
