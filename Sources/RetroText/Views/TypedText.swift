@@ -61,7 +61,7 @@ public struct TypedText: View {
     @Binding var skipToEnd: Bool
     
     // Drives the reveal of each character
-    let timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 0.025, on: .main, in: .common).autoconnect()
 
     // MARK: Computed properties
     public var body: some View {
